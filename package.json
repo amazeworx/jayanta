@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "production:css": "cross-env NODE_ENV=development tailwindcss -i ./src/css/app.css -o ./dist/css/app.css --postcss",
+    "production:js": "cross-env NODE_ENV=development ./node_modules/.bin/esbuild ./src/js/app.js --bundle --outfile=./dist/js/app.js",
+    "dev:css": "cross-env NODE_ENV=development tailwindcss -i ./src/css/app.css -o ./dist/css/app.css --postcss",
+    "dev:js": "cross-env NODE_ENV=development ./node_modules/.bin/esbuild ./src/js/app.js --bundle --outfile=./dist/js/app.js",
+    "watch:css": "cross-env NODE_ENV=development tailwindcss -i ./src/css/app.css -o ./dist/css/app.css --postcss --watch",
+    "watch:js": "cross-env NODE_ENV=development ./node_modules/.bin/esbuild ./src/js/app.js --bundle --outfile=./dist/js/app.js --watch",
+    "production": "cross-env NODE_ENV=production concurrently \"npm run production:css\" \"npm run production:js\"",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run dev:css\" \"npm run dev:js\"",
+    "watch": "cross-env NODE_ENV=development concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "browser-sync": "cross-env NODE_ENV=development browser-sync start --server --no-inject-changes --files=\"./\"",
+    "watch-sync": "cross-env NODE_ENV=development concurrently \"npm run browser-sync\" \"npm run watch\""
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "browser-sync": "^2.29.1",
+    "concurrently": "^8.0.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.17.18",
+    "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "postcss-nested-ancestors": "^3.0.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "flowbite": "^1.6.5"
+  }
+}
